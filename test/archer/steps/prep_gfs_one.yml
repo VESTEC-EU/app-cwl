@@ -1,0 +1,11 @@
+mpi:
+  tasks: 1
+  launcher: aprun
+  extra_flags: [-q]
+pgd:
+  class: File
+  path: CFIRE02KM.nc
+gfs_grib:
+  class: File
+  path:  /work/z01/z01/shared/vestec/mesonh/GFS/gfsanl.3.20190711.00
+ini_nameroot: GFS20190711.00

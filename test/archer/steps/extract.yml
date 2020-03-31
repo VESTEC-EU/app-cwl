@@ -1,0 +1,22 @@
+diachronic_backups:
+  - class: File
+    path: TEST1.1.S1234.001.nc
+  - class: File
+    path: TEST1.1.S1234.002.nc
+  - class: File
+    path: TEST1.1.S1234.003.nc
+  - class: File
+    path: TEST1.1.S1234.004.nc
+  - class: File
+    path: TEST1.1.S1234.005.nc
+  - class: File
+    path: TEST1.1.S1234.006.nc
+
+output_name: fire_input.nc
+
+ncl_root:
+  class: Directory
+  path: /work/y07/y07/cse/ncl/6.4.0
+ncl_resfile:
+  class: File
+  path: /work/y07/y07/cse/ncl/6.4.0/share/hluresfile

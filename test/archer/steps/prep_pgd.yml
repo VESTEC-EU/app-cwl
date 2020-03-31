@@ -1,0 +1,18 @@
+mpi:
+  tasks: 1
+  launcher: aprun
+  extra_flags: [-q]
+  
+output_basename: CFIRE02KM
+clay:
+  class: File
+  path: /work/z01/z01/shared/vestec/mesonh/PREP_PGD_FILES_WWW/CLAY_HWSD_MOY.dir
+cover:
+  class: File
+  path: /work/z01/z01/shared/vestec/mesonh/PREP_PGD_FILES_WWW/ECOCLIMAP_v2.0.dir
+zs:
+  class: File
+  path: /work/z01/z01/shared/vestec/mesonh/PREP_PGD_FILES_WWW/gtopo30.dir
+sand:
+  class: File
+  path: /work/z01/z01/shared/vestec/mesonh/PREP_PGD_FILES_WWW/SAND_HWSD_MOY.dir
