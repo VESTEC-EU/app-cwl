@@ -104,10 +104,6 @@ inputs:
     type: File
 
 outputs:
-  ncl:
-    type: File
-    outputBinding:
-      glob: select.ncl
   extract:
     type: File
     outputBinding:
