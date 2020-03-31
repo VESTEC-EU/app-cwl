@@ -1,0 +1,44 @@
+mpi_prep:
+  tasks: 1
+  launcher: aprun
+  extra_flags: [-q]
+  
+clay:
+  class: File
+  path: /work/z01/z01/shared/vestec/mesonh/PREP_PGD_FILES_WWW/CLAY_HWSD_MOY.dir
+cover:
+  class: File
+  path: /work/z01/z01/shared/vestec/mesonh/PREP_PGD_FILES_WWW/ECOCLIMAP_v2.0.dir
+zs:
+  class: File
+  path: /work/z01/z01/shared/vestec/mesonh/PREP_PGD_FILES_WWW/gtopo30.dir
+sand:
+  class: File
+  path: /work/z01/z01/shared/vestec/mesonh/PREP_PGD_FILES_WWW/SAND_HWSD_MOY.dir
+
+gfs_gribs:
+  - class: File
+    path: /work/z01/z01/shared/vestec/mesonh/GFS/gfsanl_3_20190711_0000_000.grb2
+  - class: File
+    path: /work/z01/z01/shared/vestec/mesonh/GFS/gfsanl_3_20190711_0600_000.grb2
+ini_nameroots:
+  - GFS20190711.00
+  - GFS20190711.06
+
+mpi_sim:
+  tasks: 4
+  launcher: aprun
+  extra_flags: [-q]
+
+turblen: BL89
+turbdim: 1DIM
+experiment_name: TEST1
+segment_name: S1234
+output_name: fire_input.nc
+
+ncl_root:
+  class: Directory
+  path: /work/y07/y07/cse/ncl/6.4.0
+ncl_resfile:
+  class: File
+  path: /work/y07/y07/cse/ncl/6.4.0/share/hluresfile
