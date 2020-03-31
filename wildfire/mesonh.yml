@@ -1,0 +1,15 @@
+- type: enum
+  name: turblen
+  label: Type of turbulence mixing lenght
+  symbols:
+    - DELT
+    - 1DIM
+    - BL89
+    - DEAR
+    - RM17
+- type: enum
+  name: turbdim
+  label: turbulence dimensionality
+  symbols:
+    - 1DIM
+    - 3DIM
