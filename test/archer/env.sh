@@ -3,7 +3,7 @@
 # VESTEC modules
 module use /work/z01/z01/shared/vestec/modules
 # CWL stuff
-module load cwl nodejs
+module load nodejs cwl/mpi-req
 # Ensure that python and NCL play nicely together...
 module swap gcc gcc/6.3.0
 
@@ -11,7 +11,7 @@ module swap gcc gcc/6.3.0
 export VESTEC_CWL_ROOT=$(git rev-parse --show-toplevel)
 # Software requirements for platform
 export VESTEC_CWL_PLATFORM_CONF=$(readlink -f $(dirname $BASH_SOURCE)/modules-conf.yml)
-
+export VESTEC_CWL_MPI_CONF=$(readlink -f $(dirname $BASH_SOURCE)/mpi-conf.yml)
 # Because of special per-node temporary RAM disk FS set up by
 # system...  We need to ensure there is a tmpdir that can be used from
 # login, MOM, and compute nodes, so it has to be on the work FS

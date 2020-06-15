@@ -3,6 +3,8 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
+$namespaces:
+  cwltool: http://commonwl.org/cwltool#
 
 hints:
   SoftwareRequirement:
@@ -14,11 +16,8 @@ requirements:
   InlineJavascriptRequirement:
     expressionLib:
       - $include: mesonh.js
-      - $include: ../lib/mpi.js
-  SchemaDefRequirement:
-    types:
-      - $import: ../lib/mpi.yml
-
+  cwltool:MPIRequirement:
+    processes: 1
   InitialWorkDirRequirement:
     listing:
       - $(inputs.pgd)
@@ -38,9 +37,6 @@ requirements:
                         ZSTRGRD=7., ZSTRTOP=8. /
 
 inputs:
-  mpi:
-    type: ../lib/mpi.yml#mpi
-    default: {}
   pgd:
     type: File
     secondaryFiles: ^.des
@@ -49,9 +45,7 @@ inputs:
   ini_nameroot:
     type: string
 
-arguments:
-  - position: 0
-    valueFrom: $(mpi.run("PREP_REAL_CASE"))
+baseCommand: PREP_REAL_CASE
 
 outputs:
   log:

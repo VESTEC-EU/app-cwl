@@ -1,8 +1,3 @@
-mpi_prep:
-  tasks: 1
-  launcher: aprun
-  extra_flags: [-q]
-  
 clay:
   class: File
   path: /work/z01/z01/shared/vestec/mesonh/PREP_PGD_FILES_WWW/CLAY_HWSD_MOY.dir
@@ -25,10 +20,7 @@ ini_nameroots:
   - GFS20190711.00
   - GFS20190711.06
 
-mpi_sim:
-  tasks: 4
-  launcher: aprun
-  extra_flags: [-q]
+sim_processes: 4
 
 turblen: BL89
 turbdim: 1DIM

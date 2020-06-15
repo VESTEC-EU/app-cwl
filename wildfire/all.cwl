@@ -5,23 +5,15 @@ cwlVersion: v1.0
 class: Workflow
 
 requirements:
-  InlineJavascriptRequirement:
-    expressionLib:
-      - $include: ../lib/mpi.js
   SchemaDefRequirement:
     types:
-      - $import: ../lib/mpi.yml
       - $import: mesonh.yml
   ScatterFeatureRequirement: {}
   MultipleInputFeatureRequirement: {}
 
 inputs:
-  mpi_prep:
-    type: ../lib/mpi.yml#mpi
-    default: {}
-  mpi_sim:
-    type: ../lib/mpi.yml#mpi
-    default: {}
+  sim_processes:
+    type: int
   clay:
     type: File
     secondaryFiles: ^.hdr
@@ -58,7 +50,6 @@ steps:
   prep_pgd:
     run: prep_pgd.cwl
     in:
-      mpi: mpi_prep
       clay: clay
       sand: sand
       cover: cover
@@ -71,7 +62,6 @@ steps:
     scatter: [gfs_grib, ini_nameroot]
     scatterMethod: dotproduct
     in:
-      mpi: mpi_prep
       gfs_grib: gfs_gribs
       ini_nameroot: ini_nameroots
       pgd: prep_pgd/pgd
@@ -80,7 +70,7 @@ steps:
   meso:
     run: mesonh.cwl
     in:
-      mpi: mpi_sim
+      processes: sim_processes
       pgd: prep_pgd/pgd
       inis: prep_gfs/ini
       experiment_name: experiment_name

@@ -3,4 +3,4 @@
     version: 5.4.2
   to:
     name: mesonh
-    version: 5.4.2-intel-debug
+    version: 5.4.2-LXifort-O2 

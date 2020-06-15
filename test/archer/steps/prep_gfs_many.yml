@@ -1,7 +1,3 @@
-mpi:
-  launcher: aprun
-  tasks: 1
-  extra_flags: [--quiet]
 pgd:
   class: File
   path: CFIRE02KM.nc

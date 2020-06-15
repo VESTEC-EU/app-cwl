@@ -1,6 +1,6 @@
 - type: enum
   name: turblen
-  label: Type of turbulence mixing lenght
+  label: Type of turbulence mixing length
   symbols:
     - DELT
     - 1DIM

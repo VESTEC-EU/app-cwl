@@ -3,6 +3,8 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
+$namespaces:
+  cwltool: http://commonwl.org/cwltool#
 
 hints:
   SoftwareRequirement:
@@ -13,11 +15,9 @@ hints:
 requirements:
   SchemaDefRequirement:
     types:
-      - $import: ../lib/mpi.yml
       - $import: mesonh.yml
-  InlineJavascriptRequirement:
-    expressionLib:
-      - $include: ../lib/mpi.js
+  cwltool:MPIRequirement:
+    processes: $(inputs.processes)
   InitialWorkDirRequirement:
     listing:
       - $(inputs.pgd)
@@ -54,9 +54,8 @@ requirements:
           &NAM_BACKUP XBAK_TIME_FREQ_FIRST=300, XBAK_TIME_FREQ=300 /
 
 inputs:
-  mpi:
-    type: ../lib/mpi.yml#mpi
-    default: {}
+  processes:
+    type: int
   pgd:
     label: Physiographic data, preprocessed by PREP_PGD, in NetCDF.
     type: File
@@ -76,9 +75,7 @@ inputs:
   turbdim:
     type: mesonh.yml#turbdim
 
-arguments:
-  - position: 0
-    valueFrom: $(mpi.run("MESONH"))
+baseCommand: MESONH
 
 outputs:
   log:

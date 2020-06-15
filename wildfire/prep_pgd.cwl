@@ -3,6 +3,8 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
+$namespaces:
+  cwltool: http://commonwl.org/cwltool#
 
 hints:
   SoftwareRequirement:
@@ -11,12 +13,8 @@ hints:
         version: ["5.4.2"]
 
 requirements:
-  InlineJavascriptRequirement:
-    expressionLib:
-      - $include: ../lib/mpi.js
-  SchemaDefRequirement:
-    types:
-      - $import: ../lib/mpi.yml
+  cwltool:MPIRequirement:
+    processes: 1
   InitialWorkDirRequirement:
     listing:
       - $(inputs.clay)
@@ -38,9 +36,6 @@ requirements:
                     YSAND='$(inputs.sand.nameroot)', YSANDFILETYPE='DIRECT' /
 
 inputs:
-  mpi:
-    type: ../lib/mpi.yml#mpi
-    default: {}
   clay:
     type: File
     secondaryFiles: ^.hdr
@@ -56,9 +51,7 @@ inputs:
   output_basename:
     type: string
 
-arguments:
-  - position: 0
-    valueFrom: $(mpi.run("PREP_PGD"))
+baseCommand: PREP_PGD
 
 outputs:
   log:
@@ -70,5 +63,3 @@ outputs:
     outputBinding:
       glob: $(inputs.output_basename).nc
     secondaryFiles: ^.des
-
-

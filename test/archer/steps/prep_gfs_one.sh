@@ -11,6 +11,6 @@ cd $PBS_O_WORKDIR
 
 tmp_init $PWD/tmp
 
-cwltool --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF $VESTEC_CWL_ROOT/wildfire/prep_gfs_one.cwl prep_gfs_one.yml
+cwltool --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF --enable-ext --mpi-config-file $VESTEC_CWL_MPI_CONF $VESTEC_CWL_ROOT/wildfire/prep_gfs_one.cwl prep_gfs_one.yml
 
 tmp_finalise

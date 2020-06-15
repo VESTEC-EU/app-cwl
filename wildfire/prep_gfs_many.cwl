@@ -5,19 +5,10 @@ cwlVersion: v1.0
 class: Workflow
 
 requirements:
-  InlineJavascriptRequirement:
-    expressionLib:
-      - $include: ../lib/mpi.js
-  SchemaDefRequirement:
-    types:
-      - $import: ../lib/mpi.yml
   ScatterFeatureRequirement: {}
   MultipleInputFeatureRequirement: {}
 
 inputs:
-  mpi:
-    type: ../lib/mpi.yml#mpi
-    default: {}
   pgd:
     type: File
     secondaryFiles: ^.des
@@ -32,7 +23,6 @@ steps:
     scatter: [gfs_grib, ini_nameroot]
     scatterMethod: dotproduct
     in:
-      mpi: mpi
       gfs_grib: gfs_gribs
       ini_nameroot: ini_nameroots
       pgd: pgd
