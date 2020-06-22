@@ -1,9 +1,7 @@
 # Source this to make things work on ARCHER
 
-# VESTEC modules
-module use /work/z01/z01/shared/vestec/modules
 # CWL stuff
-module load nodejs cwl/mpi-req
+module load nodejs cwl
 # Ensure that python and NCL play nicely together...
 module swap gcc gcc/6.3.0
 
