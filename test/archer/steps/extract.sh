@@ -6,7 +6,7 @@
 #PBS -l select=1
 #PBS -l walltime=0:05:00
 #PBS -q short
-#PBS -A z19-cse
+#PBS -A d170
 
 cd ${PBS_O_WORKDIR-$PWD}
 

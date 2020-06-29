@@ -1,7 +1,7 @@
 #!/usr/bin/env cwl-runner
 # -*- mode: yaml; -*-
 
-cwlVersion: v1.0
+cwlVersion: v1.1
 class: Workflow
 
 requirements:
@@ -14,6 +14,16 @@ requirements:
 inputs:
   sim_processes:
     type: int
+
+  upperleft:
+    type: mesonh.yml#geo_point
+  lowerright:
+    type: mesonh.yml#geo_point
+  dx:
+    type: float
+    default: 2000.0
+    label: horizontal resolution in metres
+
   clay:
     type: File
     secondaryFiles: ^.hdr
@@ -50,6 +60,9 @@ steps:
   prep_pgd:
     run: prep_pgd.cwl
     in:
+      upperleft: upperleft
+      lowerright: lowerright
+      dx: dx
       clay: clay
       sand: sand
       cover: cover
@@ -77,12 +90,12 @@ steps:
       segment_name: segment_name
       turbdim: turbdim
       turblen: turblen
-    out: [diachronic_backups]
+    out: [later_diachronic_backups]
 
   post:
     run: extract.cwl
     in:
-      diachronic_backups: meso/diachronic_backups
+      diachronic_backups: meso/later_diachronic_backups
       output_name: output_name
       ncl_root: ncl_root
       ncl_resfile: ncl_resfile

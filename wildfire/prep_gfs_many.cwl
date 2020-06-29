@@ -1,7 +1,7 @@
 #!/usr/bin/env cwl-runner
 # -*- mode: yaml; -*-
 
-cwlVersion: v1.0
+cwlVersion: v1.1
 class: Workflow
 
 requirements:

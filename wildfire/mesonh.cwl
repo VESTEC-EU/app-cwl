@@ -1,7 +1,7 @@
 #!/usr/bin/env cwl-runner
 # -*- mode: yaml; -*-
 
-cwlVersion: v1.0
+cwlVersion: v1.1
 class: CommandLineTool
 $namespaces:
   cwltool: http://commonwl.org/cwltool#
@@ -18,6 +18,9 @@ requirements:
       - $import: mesonh.yml
   cwltool:MPIRequirement:
     processes: $(inputs.processes)
+  InlineJavascriptRequirement:
+    expressionLib:
+      - $include: mesonh.js        
   InitialWorkDirRequirement:
     listing:
       - $(inputs.pgd)
@@ -65,10 +68,10 @@ inputs:
     type: File[]
     secondaryFiles: ^.des
   experiment_name:
-    label: Name of set of runs - must be 5 characters
+    label: Name of set of runs - MUST be 5 characters
     type: string
   segment_name:
-    label: Name of segment within experiment - must be 5 characters
+    label: Name of segment within experiment - MUST be 5 characters
     type: string
   turblen:
     type: mesonh.yml#turblen
@@ -82,8 +85,14 @@ outputs:
     type: File[]
     outputBinding:
       glob: OUTPUT_LISTING?
-  diachronic_backups:
+  first_diachronic_backup:
+    type: File
+    outputBinding:
+      glob: $(inputs.experiment_name).1.$(inputs.segment_name).000.nc
+    secondaryFiles: ^.des
+  later_diachronic_backups:
     type: File[]
     outputBinding:
       glob: $(inputs.experiment_name).1.$(inputs.segment_name).???.nc
+      outputEval: $(self.filter(function(back_file) {return !back_file.basename.endsWith("000.nc")} ))
     secondaryFiles: ^.des
