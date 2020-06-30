@@ -1,0 +1,8 @@
+- type: record
+  name: point
+  label: a point on the Earth as lat/lon
+  fields:
+    lat:
+      type: float
+    lon:
+      type: float

@@ -8,6 +8,7 @@ requirements:
   SchemaDefRequirement:
     types:
       - $import: mesonh.yml
+      - $import: geo.yml
   ScatterFeatureRequirement: {}
   MultipleInputFeatureRequirement: {}
 
@@ -16,9 +17,9 @@ inputs:
     type: int
 
   upperleft:
-    type: mesonh.yml#geo_point
+    type: geo.yml#point
   lowerright:
-    type: mesonh.yml#geo_point
+    type: geo.yml#point
   dx:
     type: float
     default: 2000.0

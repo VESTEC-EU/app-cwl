@@ -21,6 +21,8 @@ requirements:
   SchemaDefRequirement:
     types:
       - $import: mesonh.yml
+      - $import: geo.yml
+
   InitialWorkDirRequirement:
     listing:
       - $(inputs.clay)
@@ -54,9 +56,9 @@ inputs:
     default: 0.0
     label: rotation angle of the simulation domain around the reference longitude
   upperleft:
-    type: mesonh.yml#geo_point
+    type: geo.yml#point
   lowerright:
-    type: mesonh.yml#geo_point
+    type: geo.yml#point
   dx:
     type: float
     default: 2000.0
