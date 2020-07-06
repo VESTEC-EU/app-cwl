@@ -2,4 +2,5 @@
   modulecmd: /opt/modules/3.2.10.6/bin/modulecmd
   mapping_files:
     - mesonh-modules.yml
-  
+    - wildfire.yml
+

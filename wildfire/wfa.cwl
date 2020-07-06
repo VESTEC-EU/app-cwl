@@ -1,0 +1,123 @@
+#!/usr/bin/env cwl-runner
+# -*- mode: yaml; -*-
+
+cwlVersion: v1.1
+class: CommandLineTool
+$namespaces:
+  cwltool: http://commonwl.org/cwltool#
+
+hints:
+  SoftwareRequirement:
+    packages:
+      WildFireAnalyst:
+        version: ["vestec"]
+
+requirements:
+  SchemaDefRequirement:
+    types:
+      - $import: geo.yml
+
+
+  InlineJavascriptRequirement: {}
+
+  cwltool:MPIRequirement:
+    processes: $(inputs.mpi_processes)
+
+  EnvVarRequirement:
+    envDef:
+      OMP_NUM_THREADS: $(inputs.omp_threads.toString())
+
+  InitialWorkDirRequirement:
+    listing:
+      - $(inputs.fuel_geotiff)
+      - $(inputs.mdt_geotiff)
+      - $(inputs.weather_data)
+      - $(inputs.dynamic_config)
+      - class: Directory
+        listing: []
+        basename: OUT
+      - entryname: config.json
+        entry: |
+          {
+            "simName": "$(inputs.sim_name)",
+            "simDuration": $(inputs.sim_duration),
+            "timeIndex": $(inputs.start_time),
+            "numberSims": $(Math.round(inputs.total_sims/inputs.mpi_processes)),
+            "domain":[
+              $(inputs.upperleft.lat),
+              $(inputs.lowerright.lat),
+              $(inputs.upperleft.lon),
+              $(inputs.lowerright.lon)
+            ],
+            "cores": -1,
+            "validation": false,
+            "cellsizeFactor": 1,
+            "loopsPerSync": 1,
+            "loopsPerConfiUpdate": 1,
+            "lifeFuelMoisture": 0.1,
+            "outputFolder": "OUT/",
+            "pathUpdates": "$(inputs.dynamic_config.basename)",
+            "pathFlag": "flag.txt",
+            "pathCBD": "",
+            "pathCBH": "",
+            "pathCC": "",
+            "pathCH": "",
+            "pathFuel": "$(inputs.fuel_geotiff.basename)",
+            "pathMdt": "$(inputs.mdt_geotiff.basename)",
+            "pathWeatherWrfout": "$(inputs.weather_data.basename)"
+          }
+
+inputs:
+  mpi_processes:
+    type: int
+  omp_threads:
+    type: int
+
+  sim_name:
+    type: string
+    default: Vestec_
+  sim_duration:
+    type: float
+    label: Simulation duration in hours
+  start_time:
+    type: float
+    label: start time from beginning of the weather data (hours)
+
+  total_sims:
+    type: int
+    label: the total number of simulations
+
+  upperleft:
+    type: geo.yml#point
+  lowerright:
+    type: geo.yml#point
+
+  fuel_geotiff:
+    type: File
+    label: Input fuel geotiff
+  mdt_geotiff:
+    type: File
+    label: Input MDT geotiff
+
+  weather_data:
+    type: File
+    label: Weather NetCDF file
+
+  dynamic_config:
+    type: File
+    label: WFA dynamic configuration
+
+baseCommand: [WildFire, config.json]
+
+stdout: log.out
+outputs:
+  conf:
+    type: File
+    outputBinding:
+      glob: config.json
+  log:
+    type: stdout
+  data:
+    type: File[]
+    outputBinding:
+      glob: OUT/*

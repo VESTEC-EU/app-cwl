@@ -1,0 +1,6 @@
+- from:
+    name: WildFireAnalyst
+    version: vestec
+  to:
+    name: fireapp
+    version: develop
