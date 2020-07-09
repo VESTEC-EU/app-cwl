@@ -14,7 +14,7 @@
   "sigma_mwood": 0.3,
   "sigma_mherb": 0.3,
   "sigma_adj": 1.0,
-  "simDurationOutput": 25.0,
+  "simDurationOutput": 3.0,
   "controlPoints": [
     [
       42.45578,

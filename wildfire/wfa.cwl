@@ -75,7 +75,7 @@ inputs:
 
   sim_name:
     type: string
-    default: Vestec_
+    default: Vestec
   sim_duration:
     type: float
     label: Simulation duration in hours
@@ -115,9 +115,15 @@ outputs:
     type: File
     outputBinding:
       glob: config.json
-  log:
-    type: stdout
+  logs:
+    type: File[]
+    outputBinding:
+      glob: OUT/$(inputs.sim_name)_LOG_*.txt
   data:
     type: File[]
     outputBinding:
-      glob: OUT/*
+      glob: OUT/$(inputs.sim_name)_*.tif
+  best_conditions:
+    type: File?
+    outputBinding:
+      glob: OUT/$(inputs.sim_name)_Best_Conditions.json
