@@ -12,9 +12,9 @@ sand:
   class: File
   path: /work/d170/shared/data/mesonh/PREP_PGD_FILES_WWW/SAND_HWSD_MOY.dir
 upperleft:
-  lat: 34.05
-  lon: -118.05
+  lat: 42.5006
+  lon: 2.62
 lowerright:
-  lat: 33.95
-  lon: -117.95
+  lat: 42.1889
+  lon: 3.07
 dx: 2000.0
