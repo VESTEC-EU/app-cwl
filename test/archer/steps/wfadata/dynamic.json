@@ -1,7 +1,7 @@
 {
   "stop": false,
   "pause": false,
-  "exportProb": false,
+  "exportProb": true,
   "exportBest": true,
   "exportBase": true,
   "ctePerturbation": true,

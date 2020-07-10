@@ -18,8 +18,6 @@ requirements:
       - $import: geo.yml
 
 
-  InlineJavascriptRequirement: {}
-
   cwltool:MPIRequirement:
     processes: $(inputs.mpi_processes)
 
@@ -42,7 +40,7 @@ requirements:
             "simName": "$(inputs.sim_name)",
             "simDuration": $(inputs.sim_duration),
             "timeIndex": $(inputs.start_time),
-            "numberSims": $(Math.round(inputs.total_sims/inputs.mpi_processes)),
+            "numberSims": $(inputs.sims_per_rank)),
             "domain":[
               $(inputs.upperleft.lat),
               $(inputs.lowerright.lat),
@@ -83,9 +81,9 @@ inputs:
     type: float
     label: start time from beginning of the weather data (hours)
 
-  total_sims:
+  sims_per_rank:
     type: int
-    label: the total number of simulations
+    label: the number of simulations per MPI rank
 
   upperleft:
     type: geo.yml#point
@@ -111,10 +109,6 @@ baseCommand: [WildFire, config.json]
 
 stdout: log.out
 outputs:
-  conf:
-    type: File
-    outputBinding:
-      glob: config.json
   logs:
     type: File[]
     outputBinding:
