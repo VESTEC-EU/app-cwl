@@ -52,9 +52,9 @@ requirements:
           &NAM_CONF  CCONF = "START", NVERB=1, NMODEL = 1, LLG = F,
                      CEXP = "$(inputs.experiment_name)", CSEG = "$(inputs.segment_name)" ,
                      NHALO=3, CSPLIT='BSPLITTING' /
-          &NAM_DYN XSEGLEN=1800, LCORIO = T, LNUMDIFU = F,
+          &NAM_DYN XSEGLEN=$(inputs.segment_length), LCORIO = T, LNUMDIFU = F,
                    XALKTOP = 0.001, XALZBOT = 4000.  /
-          &NAM_BACKUP XBAK_TIME_FREQ_FIRST=300, XBAK_TIME_FREQ=300 /
+          &NAM_BACKUP XBAK_TIME_FREQ_FIRST=0, XBAK_TIME_FREQ=$(inputs.output_period) /
 
 inputs:
   processes:
@@ -73,11 +73,18 @@ inputs:
   segment_name:
     label: Name of segment within experiment - MUST be 5 characters
     type: string
+  segment_length:
+    label: Simulation segment length in seconds
+    type: float
+  output_period:
+    label: Time in undocumented units between output of backups
+    type: float
+    default: 300
   turblen:
     type: mesonh.yml#turblen
   turbdim:
     type: mesonh.yml#turbdim
-
+  
 baseCommand: MESONH
 
 outputs:
@@ -85,12 +92,12 @@ outputs:
     type: File[]
     outputBinding:
       glob: OUTPUT_LISTING?
-  first_diachronic_backup:
+  diachronic:
     type: File
     outputBinding:
       glob: $(inputs.experiment_name).1.$(inputs.segment_name).000.nc
     secondaryFiles: ^.des
-  later_diachronic_backups:
+  synchronous_backups:
     type: File[]
     outputBinding:
       glob: $(inputs.experiment_name).1.$(inputs.segment_name).???.nc

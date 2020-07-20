@@ -1,4 +1,4 @@
-processes: 4
+processes: 24
 pgd:
   class: File
   path: CFIRE02KM.nc
@@ -11,3 +11,5 @@ turblen: BL89
 turbdim: 1DIM
 experiment_name: TEST1
 segment_name: S1234
+segment_length: 1800
+output_period: 300
