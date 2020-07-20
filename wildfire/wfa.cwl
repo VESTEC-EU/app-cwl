@@ -111,7 +111,6 @@ inputs:
 
 baseCommand: [WildFire, config.json]
 
-stdout: log.out
 outputs:
   logs:
     type: File[]
@@ -124,6 +123,6 @@ outputs:
       glob: OUT/$(inputs.sim_name)_*_*.tif
       outputEval: $(structure_wfa_output(self))
   best_conditions:
-    type: File?
+    type: File
     outputBinding:
       glob: OUT/$(inputs.sim_name)_Best_Conditions.json

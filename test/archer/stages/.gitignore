@@ -1,0 +1,18 @@
+tmp
+
+# PREP_PGD
+CFIRE02KM.*
+OUTPUT_LISTING?
+prep-pgd.e*
+prep-pgd.o*
+
+# MNH
+fire_input.nc
+
+# WFA
+all-wfa.o*
+all-wfa.e*
+*_Best_Conditions.json
+*.png
+*.wld
+*.png.aux.xml

@@ -1,20 +1,30 @@
 # tmpdir
 tmp
-# prep pgd
+
+# PREP_PGD
 CFIRE02KM.*
-# prep gfs
+
+# PREP_GFS
 GFS20190711.??.*
+
 # MNH
 TEST1.1.S1234.???.*
 OUTPUT_LISTING?
+runmesonh.o*
+runmesonh.e*
+
 # extract
 fire_input.nc
+
 # WFA
 test_LOG_*.txt
 test_*.tif
 test_Best_Conditions.json
 test_Fire*_*.tif
+WFA.o*
+WFA.e*
+
 # WFA post
-fire_front_prob_*.png
-fire_prob_*.png
-test_LOG_*.txt
+*.png
+*.wld
+*.png.aux.xml
