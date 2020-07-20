@@ -17,6 +17,6 @@ fi
 
 tmp_init $PWD/tmp
 
-cwltool --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF $VESTEC_CWL_ROOT/wildfire/wfapost.cwl wfapost.yml
+cwltool --preserve-environment LD_LIBRARY_PATH --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF $VESTEC_CWL_ROOT/wildfire/wfapost.cwl wfapost.yml
 
 tmp_finalise

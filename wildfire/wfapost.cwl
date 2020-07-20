@@ -90,16 +90,27 @@ outputs:
     type: File
     outputBinding:
       glob: output/png/normal/normal.png
+    secondaryFiles:
+      - ^.wld
+      - ^.png.aux.xml
   fireshed_png:
     type: File
     outputBinding:
       glob: output/png/fireshed/fireshed.png
+    secondaryFiles:
+      - ^.wld
+      - ^.png.aux.xml
   fire_prob:
     type: File[]
     outputBinding:
       glob: output/png/fire_prob/fire_prob_*.png
+    secondaryFiles:
+      - ^.wld
+      - ^.png.aux.xml
   fire_front_prob:
     type: File[]
     outputBinding:
       glob: output/png/fire_front_prob/fire_front_prob_*.png
-
+    secondaryFiles:
+      - ^.wld
+      - ^.png.aux.xml
