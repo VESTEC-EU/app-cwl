@@ -16,7 +16,11 @@ requirements:
   SchemaDefRequirement:
     types:
       - $import: geo.yml
+      - $import: wfa_out.yml
 
+  InlineJavascriptRequirement:
+    expressionLib:
+      - $include: wfa.js
 
   cwltool:MPIRequirement:
     processes: $(inputs.mpi_processes)
@@ -40,7 +44,7 @@ requirements:
             "simName": "$(inputs.sim_name)",
             "simDuration": $(inputs.sim_duration),
             "timeIndex": $(inputs.start_time),
-            "numberSims": $(inputs.sims_per_rank)),
+            "numberSims": $(inputs.sims_per_rank),
             "domain":[
               $(inputs.upperleft.lat),
               $(inputs.lowerright.lat),
@@ -113,10 +117,12 @@ outputs:
     type: File[]
     outputBinding:
       glob: OUT/$(inputs.sim_name)_LOG_*.txt
+
   data:
-    type: File[]
+    type: wfa_out.yml#ras_out
     outputBinding:
-      glob: OUT/$(inputs.sim_name)_*.tif
+      glob: OUT/$(inputs.sim_name)_*_*.tif
+      outputEval: $(structure_wfa_output(self))
   best_conditions:
     type: File?
     outputBinding:

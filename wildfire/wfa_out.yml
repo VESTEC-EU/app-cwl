@@ -1,0 +1,21 @@
+- type: record
+  name: sim_set
+  fields:
+    Base:
+      type: File
+    Best:
+      type: File
+    Nsims:
+      type: File
+    Mean:
+      type: File
+    Variance:
+      type: File
+
+- type: record
+  name: ras_out
+  fields:
+    Fire:
+      type: sim_set
+    FireShed:
+      type: sim_set

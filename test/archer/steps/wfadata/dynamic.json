@@ -1,7 +1,7 @@
 {
   "stop": false,
   "pause": false,
-  "exportProb": true,
+  "exportProb": false,
   "exportBest": true,
   "exportBase": true,
   "ctePerturbation": true,
@@ -14,7 +14,7 @@
   "sigma_mwood": 0.3,
   "sigma_mherb": 0.3,
   "sigma_adj": 1.0,
-  "simDurationOutput": 3.0,
+  "simDurationOutput": 2.0,
   "controlPoints": [
     [
       42.45578,
