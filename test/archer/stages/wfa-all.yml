@@ -6,10 +6,10 @@ start_time: 0
 sims_per_rank: 5
 fuel_geotiff:
   class: File
-  path: wfadata/_2_fuel_10m.tif
+  path: /work/d170/d170/nashvest/app-cwl/test/archer/steps/_2_fuel_10m.tif
 mdt_geotiff:
   class: File
-  path: wfadata/_2_dem_extract_10m_extract.tif
+  path: /work/d170/d170/nashvest/app-cwl/test/archer/steps/_2_dem_extract_10m_extract.tif
 weather_data:
   class: File
   path: fire_input.nc
@@ -21,4 +21,4 @@ lowerright:
   lon: 3.07
 dynamic_config:
   class: File
-  path: wfadata/dynamic.json
+  path: dynamic.json
