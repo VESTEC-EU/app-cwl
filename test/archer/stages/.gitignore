@@ -8,6 +8,8 @@ prep-pgd.o*
 
 # MNH
 fire_input.nc
+all-mnh.o*
+all-mnh.e*
 
 # WFA
 all-wfa.o*
