@@ -6,9 +6,9 @@ The workflow is:
 
 2. Extract initial/boundary condition weather data from global forecasts (GFS)
 
-3. Run MesoNH simulatio
+3. Run MesoNH simulation
 
-4. Post process results into form needed by WFA
+4. Post process results into form needed by WFA (NetCDF file)
 
 5. Run WFA
 
@@ -38,18 +38,18 @@ and runs until `time = time(initial forecast) + duration(segment_length)`.
 WFA:
 
 * takes an integer parameter `timeIndex` which is the index into the
-  weather NetCDF time dimension where the sim starts. If the input
-  data output period is 1 hour, this corresponds to documentation
-  ("start hour from the beginning of the weather data").
+  weather NetCDF time dimension where the sim starts. For example,
+  since the time inteval of the NetCDF is 1 hour, timeIndex=7 means that
+  the simulation will start 7 hours after the start date of the NetCDF file.
 
-* assumes input weather data is given hourly
+* WFA assumes the NetCDF time interval is 1 hour.
 
 * `simDurationOutput` is the duration, in hours, the user defines for a simulation
 
 * `simDuration` is the actual duration, in hours, of the simulation used
   internally by WFA. This should be 3 times `simDurationOutput`. (The
   reason to use longer durations internally is because the probabilistic
-  output needs all simulations to cover most of the domain.)
+  output needs all simulations to cover most of the domain to do the statistical analysis.)
 
 Forecast data:
 * GFS forecasts are run (published?) every 6hrs at 00:00, 06:00,
@@ -60,11 +60,11 @@ then the following holds (working backwards):
 
   * WFA
 
-    - `simDurationOutput` must be time(stop) - time(end)
+    - `simDurationOutput` must be time(stop) - time(start) = user defined duration in hours
 
-	- `simDuration` must `3 * simDuration`
+    - `simDuration` must be `3 * simDurationOutput`
 
-	- `timeIndex` is zero, WLOG
+    - `timeIndex` is zero, WLOG (since the simulation will start at the same time as the NetCDF starting date)
 
   * MesoNH
 
