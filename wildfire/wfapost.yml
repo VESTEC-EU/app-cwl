@@ -1,0 +1,6 @@
+- type: enum
+  name: typeflag
+  label: Type simulation to be post processed
+  symbols:
+    - normal
+    - fireshed
