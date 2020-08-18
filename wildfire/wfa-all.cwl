@@ -12,6 +12,8 @@ requirements:
 
   InlineJavascriptRequirement: {}
   StepInputExpressionRequirement: {}
+  SubworkflowFeatureRequirement: {}
+  
 inputs:
   mpi_processes:
     type: int
