@@ -76,9 +76,7 @@ steps:
   post:
     run: wfapost.cwl
     in:
-      sim_duration:
-        source: sim_duration
-        valueFrom: $(Math.floor(self))
+      sim_duration: sim_duration
       normal_gtif:
         source: firesim/data
         valueFrom: $(self.Fire.Best)
