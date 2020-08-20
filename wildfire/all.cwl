@@ -9,8 +9,10 @@ requirements:
     types:
       - $import: mesonh.yml
       - $import: geo.yml
-  ScatterFeatureRequirement: {}
-  MultipleInputFeatureRequirement: {}
+      - $import: wfa_out.yml
+  StepInputExpressionRequirement: {}
+  InlineJavascriptRequirement: {}
+  SubworkflowFeatureRequirement: {}
 
 inputs:
   sim_processes:
@@ -40,22 +42,45 @@ inputs:
 
   gfs_gribs:
     type: File[]
-  ini_nameroots:
-    type: string[]
-  experiment_name:
-    type: string
-  segment_name:
-    type: string
+    label: global forecast data to use
+
+  sim_length_seconds:
+    label: Simulation length in seconds
+    type: float
+
+  weather_output_period_seconds:
+    label: Time in seconds between output of MesoNH backups
+    type: float
+    default: 3600
+
   turblen:
     type: mesonh.yml#turblen
   turbdim:
     type: mesonh.yml#turbdim
-  output_name:
-    type: string
   ncl_root:
     type: Directory
   ncl_resfile:
     type: File
+
+  start_time:
+    type: float
+    label: start time of WFA sim from beginning of the weather data (hours) - currently must be zero
+    default: 0.0
+
+  sims_per_rank:
+    type: int
+    label: the number of simulations per MPI rank for WFA
+
+  fuel_geotiff:
+    type: File
+    label: Input fuel geotiff
+  mdt_geotiff:
+    type: File
+    label: Input MDT geotiff
+
+  dynamic_config:
+    type: File
+    label: WFA dynamic configuration
 
 steps:
   prep_pgd:
@@ -68,41 +93,82 @@ steps:
       sand: sand
       cover: cover
       zs: zs
-      output_basename: {default: tmp_pgd}
+      output_basename: {valueFrom: tmp_pgd}
     out: [pgd]
 
-  prep_gfs:
-    run: prep_gfs_one.cwl
-    scatter: [gfs_grib, ini_nameroot]
-    scatterMethod: dotproduct
+  mnh2nc:
+    run: mesonh_composed.cwl
     in:
-      gfs_grib: gfs_gribs
-      ini_nameroot: ini_nameroots
-      pgd: prep_pgd/pgd
+        sim_processes: sim_processes
+        pgd: prep_pgd/pgd
+        gfs_gribs: gfs_gribs
+        experiment_name:
+          valueFrom: VESTC
+        segment_name:
+          valueFrom: WRKFL
+        segment_length: sim_length_seconds
+        output_period: weather_output_period_seconds
+        turblen: turblen
+        turbdim: turbdim
+        output_name:
+          valueFrom: processed_weather.nc
+        ncl_root: ncl_root
+        ncl_resfile: ncl_resfile
+    out: [fireinput]
 
-    out: [ini]
-  meso:
-    run: mesonh.cwl
+  wfa:
+    run: wfa-all.cwl
     in:
-      processes: sim_processes
-      pgd: prep_pgd/pgd
-      inis: prep_gfs/ini
-      experiment_name: experiment_name
-      segment_name: segment_name
-      turbdim: turbdim
-      turblen: turblen
-    out: [later_diachronic_backups]
-
-  post:
-    run: extract.cwl
-    in:
-      diachronic_backups: meso/later_diachronic_backups
-      output_name: output_name
-      ncl_root: ncl_root
-      ncl_resfile: ncl_resfile
-    out: [extract]
+      mpi_processes: sim_processes
+      omp_threads:
+        valueFrom: $(1)
+      sim_duration:
+        source: sim_length_seconds
+        valueFrom: $(self / 3600.0)
+      start_time: start_time
+      sims_per_rank: sims_per_rank
+      fuel_geotiff: fuel_geotiff
+      mdt_geotiff: mdt_geotiff
+      upperleft: upperleft
+      lowerright: lowerright
+      weather_data: mnh2nc/fireinput
+      dynamic_config: dynamic_config
+    out:
+      - best_conditions
+      - normal_png
+      - fireshed_png
+      - fire_prob_png
+      - fire_front_prob_png
 
 outputs:
-  fireinput:
+  best_conditions:
     type: File
-    outputSource: post/extract
+    outputSource: wfa/best_conditions
+
+  normal_png:
+    outputSource: wfa/normal_png
+    type: File
+    secondaryFiles:
+      - ^.wld
+      - ^.png.aux.xml
+
+  fireshed_png:
+    outputSource: wfa/fireshed_png
+    type: File
+    secondaryFiles:
+      - ^.wld
+      - ^.png.aux.xml
+
+  fire_prob_png:
+    outputSource: wfa/fire_prob_png
+    type: File[]
+    secondaryFiles:
+      - ^.wld
+      - ^.png.aux.xml
+
+  fire_front_prob_png:
+    outputSource: wfa/fire_front_prob_png
+    type: File[]
+    secondaryFiles:
+      - ^.wld
+      - ^.png.aux.xml

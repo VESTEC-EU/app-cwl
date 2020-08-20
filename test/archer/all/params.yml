@@ -1,9 +1,9 @@
 upperleft:
-  lat: 34.05
-  lon: -118.05
+  lat: 42.5006
+  lon: 2.62
 lowerright:
-  lat: 33.95
-  lon: -117.95
+  lat: 42.1889
+  lon: 3.07
 dx: 2000.0
 
 clay:
@@ -24,17 +24,13 @@ gfs_gribs:
     path: /work/d170/shared/data/mesonh/GFS/gfsanl_3_20190711_0000_000.grb2
   - class: File
     path: /work/d170/shared/data/mesonh/GFS/gfsanl_3_20190711_0600_000.grb2
-ini_nameroots:
-  - GFS20190711.00
-  - GFS20190711.06
 
 sim_processes: 4
 
 turblen: BL89
 turbdim: 1DIM
-experiment_name: TEST1
-segment_name: S1234
-output_name: fire_input.nc
+sim_length_seconds: 7200
+weather_output_period_seconds: 3600
 
 ncl_root:
   class: Directory
@@ -42,3 +38,15 @@ ncl_root:
 ncl_resfile:
   class: File
   path: /work/y07/y07/cse/ncl/6.4.0/share/hluresfile
+
+dynamic_config:
+  class: File
+  path: dynamic.json
+sims_per_rank: 5
+
+fuel_geotiff:
+  class: File
+  path: /work/d170/d170/shared/TEST_DATA/WFA/_2_fuel_10m.tif
+mdt_geotiff:
+  class: File
+  path: /work/d170/d170/shared/TEST_DATA/WFA/_2_dem_extract_10m_extract.tif
