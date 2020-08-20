@@ -10,8 +10,9 @@ requirements:
       - $import: mesonh.yml
       - $import: geo.yml
   ScatterFeatureRequirement: {}
-  MultipleInputFeatureRequirement: {}
-
+  InlineJavascriptRequirement: {}
+  StepInputExpressionRequirement: {}
+  
 inputs:
   sim_processes:
     type: int
@@ -21,8 +22,6 @@ inputs:
     secondaryFiles: ^.des
   gfs_gribs:
     type: File[]
-  ini_nameroots:
-    type: string[]
   experiment_name:
     type: string
   segment_name:
@@ -48,11 +47,12 @@ inputs:
 steps:
   prep_gfs:
     run: prep_gfs_one.cwl
-    scatter: [gfs_grib, ini_nameroot]
-    scatterMethod: dotproduct
+    scatter: gfs_grib
     in:
       gfs_grib: gfs_gribs
-      ini_nameroot: ini_nameroots
+      ini_nameroot:
+        source: gfs_gribs
+        valueFrom: $("outer" + self.findIndex(fileObj => fileObj.basename == inputs.gfs_grib.basename))
       pgd: pgd
 
     out: [ini]
