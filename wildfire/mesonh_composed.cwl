@@ -52,7 +52,7 @@ steps:
       gfs_grib: gfs_gribs
       ini_nameroot:
         source: gfs_gribs
-        valueFrom: $("outer" + self.findIndex(fileObj => fileObj.basename == inputs.gfs_grib.basename))
+        valueFrom: $("outer" + self.findIndex(function(fileObj) { return fileObj.basename == inputs.gfs_grib.basename; }))
       pgd: pgd
 
     out: [ini]
