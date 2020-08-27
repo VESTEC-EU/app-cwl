@@ -102,16 +102,10 @@ steps:
         sim_processes: sim_processes
         pgd: prep_pgd/pgd
         gfs_gribs: gfs_gribs
-        experiment_name:
-          valueFrom: VESTC
-        segment_name:
-          valueFrom: WRKFL
         segment_length: sim_length_seconds
         output_period: weather_output_period_seconds
         turblen: turblen
         turbdim: turbdim
-        output_name:
-          valueFrom: processed_weather.nc
         ncl_root: ncl_root
         ncl_resfile: ncl_resfile
     out: [fireinput]

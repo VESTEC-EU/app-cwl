@@ -22,10 +22,6 @@ inputs:
     secondaryFiles: ^.des
   gfs_gribs:
     type: File[]
-  experiment_name:
-    type: string
-  segment_name:
-    type: string
   segment_length:
     label: Simulation segment length in seconds
     type: float
@@ -37,8 +33,6 @@ inputs:
     type: mesonh.yml#turblen
   turbdim:
     type: mesonh.yml#turbdim
-  output_name:
-    type: string
   ncl_root:
     type: Directory
   ncl_resfile:
@@ -62,8 +56,10 @@ steps:
       processes: sim_processes
       pgd: pgd
       inis: prep_gfs/ini
-      experiment_name: experiment_name
-      segment_name: segment_name
+      experiment_name:
+        valueFrom: VESTC
+      segment_name:
+        valueFrom: WRKFL
       segment_length: segment_length
       output_period: output_period
       turbdim: turbdim
@@ -74,7 +70,8 @@ steps:
     run: extract.cwl
     in:
       diachronic_backups: meso/synchronous_backups
-      output_name: output_name
+      output_name:
+        valueFrom: weather_output.nc
       ncl_root: ncl_root
       ncl_resfile: ncl_resfile
     out: [extract]

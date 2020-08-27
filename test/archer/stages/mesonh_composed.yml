@@ -12,11 +12,8 @@ sim_processes: 4
 
 turblen: BL89
 turbdim: 1DIM
-experiment_name: TEST1
-segment_name: S1234
 segment_length: 1800
 output_period: 300
-output_name: fire_input.nc
 
 ncl_root:
   class: Directory
