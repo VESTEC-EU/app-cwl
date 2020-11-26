@@ -57,10 +57,6 @@ inputs:
     type: mesonh.yml#turblen
   turbdim:
     type: mesonh.yml#turbdim
-  ncl_root:
-    type: Directory
-  ncl_resfile:
-    type: File
 
   start_time:
     type: float
@@ -106,8 +102,6 @@ steps:
         output_period: weather_output_period_seconds
         turblen: turblen
         turbdim: turbdim
-        ncl_root: ncl_root
-        ncl_resfile: ncl_resfile
     out: [fireinput]
 
   wfa:

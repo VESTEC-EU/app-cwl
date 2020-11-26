@@ -1,0 +1,4 @@
+gtif:
+  class: File
+  path: test_FireShed_Best.tif
+typeflag: fireshed

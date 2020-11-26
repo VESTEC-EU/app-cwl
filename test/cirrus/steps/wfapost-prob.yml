@@ -1,0 +1,8 @@
+sim_duration: 6
+step: 2.0
+variance:
+  class: File
+  path: test_Fire_Variance.tif
+mean:
+  class: File
+  path: test_Fire_Mean.tif
