@@ -1,0 +1,6 @@
+- type: modules
+  modulecmd: /usr/bin/modulecmd
+  mapping_files:
+    - mesonh-modules.yml
+    - wildfire.yml
+

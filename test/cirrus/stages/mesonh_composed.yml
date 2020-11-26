@@ -1,0 +1,17 @@
+pgd:
+  class: File
+  path: CFIRE02KM.nc
+
+gfs_gribs:
+  - class: File
+    path: /lustre/home/shared/dc118/data/mesonh/GFS/gfsanl_3_20190711_0000_000.grb2
+  - class: File
+    path: /lustre/home/shared/dc118/data/mesonh/GFS/gfsanl_3_20190711_0600_000.grb2
+
+sim_processes: 4
+
+turblen: BL89
+turbdim: 1DIM
+segment_length: 1800
+output_period: 300
+

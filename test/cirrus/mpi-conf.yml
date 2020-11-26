@@ -1,0 +1,3 @@
+runner: srun
+nproc_flag: -n
+env_pass_regex: ["SLURM_.*"]

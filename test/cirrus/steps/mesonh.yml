@@ -1,0 +1,15 @@
+processes: 4
+pgd:
+  class: File
+  path: CFIRE02KM.nc
+inis:
+    - class: File
+      path: GFS20190711.00.nc
+    - class: File
+      path: GFS20190711.06.nc
+turblen: BL89
+turbdim: 1DIM
+experiment_name: TEST1
+segment_name: S1234
+segment_length: 1800
+output_period: 300

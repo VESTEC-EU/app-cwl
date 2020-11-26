@@ -33,10 +33,6 @@ inputs:
     type: mesonh.yml#turblen
   turbdim:
     type: mesonh.yml#turbdim
-  ncl_root:
-    type: Directory
-  ncl_resfile:
-    type: File
 
 steps:
   prep_gfs:
@@ -72,8 +68,6 @@ steps:
       diachronic_backups: meso/synchronous_backups
       output_name:
         valueFrom: weather_output.nc
-      ncl_root: ncl_root
-      ncl_resfile: ncl_resfile
     out: [extract]
 
 outputs:

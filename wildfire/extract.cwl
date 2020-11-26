@@ -8,14 +8,10 @@ hints:
   SoftwareRequirement:
     packages:
       ncl:
-        version: ["6.4.0"]
+        version: ["6"]
 
 requirements:
   InlineJavascriptRequirement: {}
-  EnvVarRequirement:
-    envDef:
-      NCARG_USRRESFILE: $(inputs.ncl_resfile.path)
-      NCARG_ROOT: $(inputs.ncl_root.path)
   InitialWorkDirRequirement:
     listing:
       - $(inputs.diachronic_backups)
@@ -27,10 +23,6 @@ inputs:
     type: File[]
   output_name:
     type: string
-  ncl_root:
-    type: Directory
-  ncl_resfile:
-    type: File
 
 outputs:
   extract:

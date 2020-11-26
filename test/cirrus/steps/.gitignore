@@ -1,0 +1,26 @@
+# tmpdir
+tmp
+
+# PREP_PGD
+CFIRE02KM.*
+
+# PREP_GFS
+GFS20190711.??.*
+
+# MNH
+TEST1.1.S1234.???.*
+OUTPUT_LISTING?
+
+# extract
+fire_input.nc
+
+# WFA
+test_LOG_*.txt
+test_*.tif
+test_Best_Conditions.json
+test_Fire*_*.tif
+
+# WFA post
+*.png
+*.wld
+*.png.aux.xml

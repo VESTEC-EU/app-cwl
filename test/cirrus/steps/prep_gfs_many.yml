@@ -1,0 +1,11 @@
+pgd:
+  class: File
+  path: CFIRE02KM.nc
+gfs_gribs:
+  - class: File
+    path: /lustre/home/shared/dc118/data/mesonh/GFS/gfsanl_3_20190711_0000_000.grb2
+  - class: File
+    path: /lustre/home/shared/dc118/data/mesonh/GFS/gfsanl_3_20190711_0600_000.grb2
+ini_nameroots:
+  - GFS20190711.00
+  - GFS20190711.06
