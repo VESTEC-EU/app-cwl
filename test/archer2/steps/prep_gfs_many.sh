@@ -1,16 +1,20 @@
-#!/bin/bash --login
-#PBS -N prep-gfs
-#PBS -l select=1
-#PBS -l walltime=0:05:00
-#PBS -q short
-#PBS -A d170
-
-cd $PBS_O_WORKDIR
+#!/bin/bash
+#SBATCH --export=none
+#SBATCH --job-name=prep_gfs_many
+#SBATCH --time=0:05:00
+#SBATCH --partition=standard
+#SBATCH --qos=short
+#SBATCH --reservation=shortqos
+#SBATCH --account=d170
+#SBATCH --nodes=1
 
 . ../env.sh
 
-tmp_init $PWD/tmp
+cwltool \
+    --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF \
+    --enable-ext \
+    --preserve-environment LD_LIBRARY_PATH \
+    --mpi-config-file $VESTEC_CWL_MPI_CONF \
+    $VESTEC_CWL_ROOT/wildfire/prep_gfs_many.cwl \
+    prep_gfs_many.yml
 
-cwltool --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF --enable-ext --mpi-config-file $VESTEC_CWL_MPI_CONF $VESTEC_CWL_ROOT/wildfire/prep_gfs_many.cwl prep_gfs_many.yml
-
-tmp_finalise

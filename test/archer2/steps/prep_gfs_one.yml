@@ -3,5 +3,5 @@ pgd:
   path: CFIRE02KM.nc
 gfs_grib:
   class: File
-  path:  /work/d170/shared/data/mesonh/GFS/gfsanl.3.20190711.00
+  path:  /work/d170/shared/data/mesonh/GFS/gfsanl_3_20190711_0000_000.grb2
 ini_nameroot: GFS20190711.00
