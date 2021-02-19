@@ -1,19 +1,21 @@
-#!/bin/bash --login
-# 
+#!/bin/bash
+#
 # NOTE! This one doesn't have to run on compute nodes
 #
-#PBS -N extract
-#PBS -l select=1
-#PBS -l walltime=0:05:00
-#PBS -q short
-#PBS -A d170
-
-cd ${PBS_O_WORKDIR-$PWD}
+#SBATCH --export=none
+#SBATCH --job-name=prep_pgd
+#SBATCH --time=0:05:00
+#SBATCH --partition=standard
+#SBATCH --qos=short
+#SBATCH --reservation=shortqos
+#SBATCH --account=d170
+#SBATCH --nodes=1
 
 . ../env.sh
 
-tmp_init $PWD/tmp
+cwltool \
+    --relax-path-checks \
+    --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF \
+    $VESTEC_CWL_ROOT/wildfire/extract.cwl \
+    extract.yml
 
-cwltool --relax-path-checks --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF $VESTEC_CWL_ROOT/wildfire/extract.cwl extract.yml
-
-tmp_finalise
