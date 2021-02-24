@@ -1,16 +1,19 @@
-#!/bin/bash --login
-#PBS -N all-mnh
-#PBS -l select=1
-#PBS -l walltime=0:10:00
-#PBS -q short
-#PBS -A d170
-
-cd $PBS_O_WORKDIR
+#!/bin/bash
+#SBATCH --export=none
+#SBATCH --job-name=mesonh_composed
+#SBATCH --time=0:10:00
+#SBATCH --partition=standard
+#SBATCH --qos=short
+#SBATCH --reservation=shortqos
+#SBATCH --account=d170
+#SBATCH --nodes=1
 
 . ../env.sh
 
-tmp_init $PWD/tmp
+cwltool \
+    --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF \
+    --enable-ext \
+    --mpi-config-file $VESTEC_CWL_MPI_CONF \
+    $VESTEC_CWL_ROOT/wildfire/mesonh_composed.cwl \
+    mesonh_composed.yml
 
-cwltool --relax-path-checks --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF --enable-ext --mpi-config-file $VESTEC_CWL_MPI_CONF $VESTEC_CWL_ROOT/wildfire/mesonh_composed.cwl mesonh_composed.yml
-
-tmp_finalise
