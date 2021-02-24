@@ -1,3 +1,4 @@
 runner: srun
 nproc_flag: --ntasks
+extra_flags: [--hint=nomultithread, --distribution=block:block]
 env_pass_regex: ["SLURM_.*"]
