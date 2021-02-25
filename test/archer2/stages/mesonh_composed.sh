@@ -13,6 +13,7 @@
 cwltool \
     --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF \
     --enable-ext \
+    --preserve-environment LD_LIBRARY_PATH \
     --mpi-config-file $VESTEC_CWL_MPI_CONF \
     $VESTEC_CWL_ROOT/wildfire/mesonh_composed.cwl \
     mesonh_composed.yml
