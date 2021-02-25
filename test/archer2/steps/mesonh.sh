@@ -10,7 +10,6 @@
 
 . ../env.sh
 
-tmp_init $PWD/tmp
 cwltool \
     --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF \
     --enable-ext \

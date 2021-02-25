@@ -7,7 +7,7 @@ prep-pgd.e*
 prep-pgd.o*
 
 # MNH
-fire_input.nc
+weather_output.nc
 all-mnh.o*
 all-mnh.e*
 
