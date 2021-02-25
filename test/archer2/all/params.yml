@@ -32,13 +32,6 @@ turbdim: 1DIM
 sim_length_seconds: 7200
 weather_output_period_seconds: 3600
 
-ncl_root:
-  class: Directory
-  path: /work/y07/y07/cse/ncl/6.4.0
-ncl_resfile:
-  class: File
-  path: /work/y07/y07/cse/ncl/6.4.0/share/hluresfile
-
 dynamic_config:
   class: File
   path: dynamic.json
