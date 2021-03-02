@@ -8,7 +8,7 @@ hints:
   SoftwareRequirement:
     packages:
       wfapost:
-        version: ["main"]
+        version: ["1"]
 
 requirements:
   InitialWorkDirRequirement:
@@ -33,10 +33,19 @@ requirements:
             basename: tif
             listing:
               - class: Directory
-                basename: fire_front_prob
+                basename: fire_prob
                 listing: []
               - class: Directory
+                basename: fire_front_prob
+                listing: []
+          - class: Directory
+            basename: kmz
+            listing:
+              - class: Directory
                 basename: fire_prob
+                listing: []
+              - class: Directory
+                basename: fire_front_prob
                 listing: []
 
 inputs:
@@ -76,6 +85,10 @@ outputs:
     secondaryFiles:
       - ^.wld
       - ^.png.aux.xml
+  fire_prob_kmz:
+    type: File
+    outputBinding:
+      glob: output/kmz/fire_prob/fire_prob.kmz
   fire_front_prob:
     type: File[]
     outputBinding:
@@ -83,3 +96,7 @@ outputs:
     secondaryFiles:
       - ^.wld
       - ^.png.aux.xml
+  fire_front_prob_kmz:
+    type: File
+    outputBinding:
+      glob: output/kmz/fire_front_prob/fire_front_prob.kmz

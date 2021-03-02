@@ -8,7 +8,7 @@ hints:
   SoftwareRequirement:
     packages:
       wfapost:
-        version: ["main"]
+        version: ["1"]
 
 requirements:
   SchemaDefRequirement:
@@ -23,6 +23,15 @@ requirements:
         listing:
           - class: Directory
             basename: png
+            listing:
+              - class: Directory
+                basename: normal
+                listing: []
+              - class: Directory
+                basename: fireshed
+                listing: []
+          - class: Directory
+            basename: kmz
             listing:
               - class: Directory
                 basename: normal
@@ -54,3 +63,4 @@ outputs:
     secondaryFiles:
       - ^.wld
       - ^.png.aux.xml
+      - ../../kmz/$(inputs.typeflag)/$(inputs.typeflag).kmz

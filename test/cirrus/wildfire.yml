@@ -5,6 +5,12 @@
     name: fireapp
     version: Catalyst
 - from:
+    name: wfapost
+    version: 1
+  to:
+    name: wfapost
+    version: 1.0.0
+- from:
     name: ncl
     version: 6
   to:

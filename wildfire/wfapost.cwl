@@ -58,7 +58,9 @@ steps:
       mean: mean
     out:
       - fire_prob
+      - fire_prob_kmz
       - fire_front_prob
+      - fire_front_prob_kmz
 
 outputs:
   normal_png:
@@ -67,21 +69,29 @@ outputs:
     secondaryFiles:
       - ^.wld
       - ^.png.aux.xml
+      - ^.kmz
   fireshed_png:
     type: File
     outputSource: fireshed/png
     secondaryFiles:
       - ^.wld
       - ^.png.aux.xml
+      - ^.kmz
   fire_prob:
     type: File[]
     outputSource: prob/fire_prob
     secondaryFiles:
       - ^.wld
       - ^.png.aux.xml
+  fire_prob_kmz:
+    type: File
+    outputSource: prob/fire_prob_kmz
   fire_front_prob:
     type: File[]
     outputSource: prob/fire_front_prob
     secondaryFiles:
       - ^.wld
       - ^.png.aux.xml
+  fire_front_prob_kmz:
+    type: File
+    outputSource: prob/fire_front_prob_kmz
