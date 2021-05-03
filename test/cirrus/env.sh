@@ -1,7 +1,7 @@
 # Source this to make things work on ARCHER
 thisdir=$(dirname $BASH_SOURCE)
 # CWL stuff
-module load nodejs cwl
+module load nodejs cwl/3.0.20210319143721
 
 # Repository root
 export VESTEC_CWL_ROOT=$(git rev-parse --show-toplevel)
