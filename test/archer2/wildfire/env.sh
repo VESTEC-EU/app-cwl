@@ -12,7 +12,7 @@ module load nodejs cwl
 export VESTEC_CWL_ROOT=$(git rev-parse --show-toplevel)
 # Software requirements for platform
 export VESTEC_CWL_PLATFORM_CONF=$(readlink -f $thisdir/modules-conf.yml)
-export VESTEC_CWL_MPI_CONF=$(readlink -f $thisdir/mpi-conf.yml)
+export VESTEC_CWL_MPI_CONF=$(readlink -f $thisdir/../mpi-conf.yml)
 
 
 # On Archer 2, /tmp is a per-node in memory FS.

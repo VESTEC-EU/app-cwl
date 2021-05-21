@@ -7,7 +7,7 @@ module load nodejs cwl/3.0.20210319143721
 export VESTEC_CWL_ROOT=$(git rev-parse --show-toplevel)
 # Software requirements for platform
 export VESTEC_CWL_PLATFORM_CONF=$(readlink -f $thisdir/modules-conf.yml)
-export VESTEC_CWL_MPI_CONF=$(readlink -f $thisdir/mpi-conf.yml)
+export VESTEC_CWL_MPI_CONF=$(readlink -f $thisdir/../mpi-conf.yml)
 # Because of special per-node temporary RAM disk FS set up by
 # system...  We need to ensure there is a tmpdir that can be used from
 # login, MOM, and compute nodes, so it has to be on the work FS
