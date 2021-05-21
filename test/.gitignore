@@ -13,11 +13,12 @@ OUTPUT_LISTING?
 
 # extract
 fire_input.nc
+weather_output.nc
 
 # WFA
 test_LOG_*.txt
 test_*.tif
-test_Best_Conditions.json
+*_Best_Conditions.json
 test_Fire*_*.tif
 
 # WFA post
