@@ -29,5 +29,5 @@ function tmp_finalise {
 }
 
 function cwldebug {
-    python -m pdb `which cwltool` $*
+    python -m pdb `which cwltool` --debug $*
 }
