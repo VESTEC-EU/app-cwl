@@ -30,3 +30,12 @@ test_Fire*_*.tif
 *.wld
 *.png.aux.xml
 *.kmz
+
+#################
+# Space weather #
+#################
+GEM3D_4species_*.vtk
+SimulationData.txt
+ConservedQuantities.txt
+restart*.hdf
+settings.hdf
