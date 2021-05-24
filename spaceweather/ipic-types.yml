@@ -1,0 +1,7 @@
+- type: enum
+  name: write_methods
+  label: iPIC3d output method
+  symbols:
+  - shdf5
+  - pvtk
+  - nbcvtk
