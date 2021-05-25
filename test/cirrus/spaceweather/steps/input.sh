@@ -10,8 +10,12 @@ cd ${SLURM_SUBMIT_DIR:-$PWD}
 
 . ../env.sh
 
+(
+    module load ipic3d
+    envsubst < example-template.yml > example.yml
+)
 tmp_init $PWD/tmp
 
-cwltool $VESTEC_CWL_ROOT/spaceweather/ipic-input-gen.cwl simple.yml
+cwltool $VESTEC_CWL_ROOT/spaceweather/ipic-input-gen.cwl example.yml
 
 tmp_finalise
