@@ -3,6 +3,8 @@
 cwlVersion: v1.1
 class: Workflow
 requirements:
+  SubworkflowFeatureRequirement: {}
+  ScatterFeatureRequirement: {}
   SchemaDefRequirement:
     types:
     - $import: ipic-types.yml
@@ -33,7 +35,9 @@ inputs:
   B0y:
     type: float?
   B0z:
-    type: float?
+    type:
+      type: array
+      items: float
   delta:
     type: float?
     label: Magnetic reconnection
@@ -218,8 +222,10 @@ inputs:
   CallFinalize:
     type: boolean?
 steps:
-  pre:
-    run: ipic-input-gen.cwl
+  ipic:
+    scatter: B0z
+    scatterMethod: flat_crossproduct
+    run: ipic.cwl
     in:
       SaveDirName: SaveDirName
       RestartDirName: RestartDirName
@@ -295,16 +301,12 @@ steps:
       RestartOutputCycle: RestartOutputCycle
       CallFinalize: CallFinalize
     out:
-    - nproc
-    - inp_data
-  main:
-    run: ipic-solo.cwl
-    in:
-      nproc: pre/nproc
-      inp_data: pre/inp_data
-    out:
     - data
 outputs:
   data:
-    type: File[]
-    outputSource: main/data
+    type:
+      type: array
+      items:
+        type: array
+        items: File
+    outputSource: ipic/data

@@ -1,0 +1,36 @@
+#!/usr/bin/env cwl-runner
+# -*- mode: yaml; -*-
+
+cwlVersion: v1.1
+class: Workflow
+requirements:
+  SubworkflowFeatureRequirement: {}
+  ScatterFeatureRequirement: {}
+  SchemaDefRequirement:
+    types:
+    - $import: ipic-types.yml
+
+inputs:
+  $SCATTER:
+    over: [B0z]
+    fields:
+      $IMPORT: all-inputs.yml
+
+steps:
+  ipic:
+    scatter: B0z
+    scatterMethod: flat_crossproduct
+    run: ipic.cwl
+    in:
+      $IMPORT: input-map.yml
+    out:
+      - data
+
+outputs:
+  data:
+    type:
+      type: array
+      items:
+        type: array
+        items: File
+    outputSource: ipic/data

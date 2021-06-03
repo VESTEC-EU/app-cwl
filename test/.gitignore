@@ -34,8 +34,8 @@ test_Fire*_*.tif
 #################
 # Space weather #
 #################
-GEM3D_4species_*.vtk
-SimulationData.txt
-ConservedQuantities.txt
-restart*.hdf
-settings.hdf
+GEM3D_4species_*.vtk*
+SimulationData.txt*
+ConservedQuantities.txt*
+restart*.hdf*
+settings.hdf*

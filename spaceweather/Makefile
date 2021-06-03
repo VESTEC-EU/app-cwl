@@ -1,11 +1,19 @@
-all: ipic.cwl ipic-input-gen.cwl
+all: ipic.cwl ipic-input-gen.cwl ipic-b0-ensemble.cwl
 
-ipic.cwl: ipic-template.cwl all-inputs.yml input-map.yml dumb_include.py
-	./dumb_include.py $< $@
-
-ipic-input-gen.cwl: ipic-input-gen-template.cwl all-inputs.yml dumb_include.py
-	./dumb_include.py $< $@
+pysource = $(wildcard cwltran/*.py)
 
 input-map.yml : input-map.py all-inputs.yml
 	./input-map.py all-inputs.yml
 
+ipic.cwl: ipic.cwl.tmpl all-inputs.yml input-map.yml $(pysource)
+	python3 -m cwltran $< $@
+
+ipic-input-gen.cwl: ipic-input-gen.cwl.tmpl all-inputs.yml $(pysource)
+	python3 -m cwltran $< $@
+
+ipic-b0-ensemble.cwl: ipic-b0-ensemble.cwl.tmpl all-inputs.yml $(pysource)
+	python3 -m cwltran $< $@
+
+.PHONY: clean
+clean:
+	rm -f input-map.yml ipic.cwl ipic-input-gen.cwl ipic-b0-ensemble.cwl ipic-types.yml

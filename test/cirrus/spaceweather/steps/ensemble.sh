@@ -12,11 +12,11 @@ cd ${SLURM_SUBMIT_DIR:-$PWD}
 
 (
     module load ipic3d
-    envsubst < example-template.yml > example.yml
+    envsubst < ensemble-template.yml > ensemble.yml
 )
 
 tmp_init $PWD/tmp
 
-cwltool $VESTEC_CWL_ROOT/spaceweather/ipic-input-gen.cwl example.yml
+cwltool --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF --enable-ext --mpi-config-file $VESTEC_CWL_MPI_CONF $VESTEC_CWL_ROOT/spaceweather/ipic-b0-ensemble.cwl ensemble.yml
 
 tmp_finalise

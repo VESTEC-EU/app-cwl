@@ -29,13 +29,10 @@ ParaviewScriptPath:
 
 B0x:
   type: float?
-  default: 0.0
 B0y:
   type: float?
-  default: 0.0
 B0z:
   type: float?
-  default: 0.0
 delta:
   type: float?
   label: Magnetic reconnection
