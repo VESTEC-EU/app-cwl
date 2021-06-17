@@ -20,7 +20,7 @@ requirements:
     processes: $(inputs.processes)
   InlineJavascriptRequirement:
     expressionLib:
-      - $include: mesonh.js        
+      - $include: mesonh.js
   InitialWorkDirRequirement:
     listing:
       - $(inputs.pgd)
