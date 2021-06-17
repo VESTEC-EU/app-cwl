@@ -39,3 +39,9 @@ SimulationData.txt*
 ConservedQuantities.txt*
 restart*.hdf*
 settings.hdf*
+
+############
+# Mosquito #
+############
+R0_chik.txt
+density.txt
