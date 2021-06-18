@@ -6,6 +6,7 @@ cd ${SLURM_SUBMIT_DIR:-$PWD}
     export disease=chik
     export species=aegypti
     export region=rome
+    module load mosquitodata/0.1.0
     module load mosquito/main
     envsubst < simple-template.yml > simple.yml
 )
