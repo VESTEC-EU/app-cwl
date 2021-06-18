@@ -1,0 +1,15 @@
+region: ${region}
+species: ${species}
+disease: ${disease}
+reproduction_number:
+  class: File
+  path: R0_${disease}.txt
+mean_abundance:
+  class: File
+  path: density.txt
+IDS:
+  class: File
+  path: ${MOSQUITODATA_DIR}/${region}/IDS_${region}.pkl
+MASCHERA:
+  class: File
+  path: ${MOSQUITODATA_DIR}/${region}/MASCHERA_${region}.pkl
