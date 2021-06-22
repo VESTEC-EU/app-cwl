@@ -6,7 +6,10 @@ module use /work/d170/shared/modules
 module use /work/d170/d170/shared/modules
 
 # CWL stuff
-module load nodejs cwl
+module load nodejs cwl/3.1.20210521105815
+
+# module commands sometimes require user interaction without this
+export MODULES_PAGER=""
 
 # Repository root
 export VESTEC_CWL_ROOT=$(git rev-parse --show-toplevel)
