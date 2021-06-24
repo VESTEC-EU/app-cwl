@@ -1,15 +1,10 @@
-region: ${region}
-species: ${species}
-disease: ${disease}
-reproduction_number:
+C_OUT:
   class: File
-  path: R0_${disease}.txt
-mean_abundance:
-  class: File
-  path: density.txt
+  path: R0_chik.txt
 IDS:
   class: File
   path: ${MOSQUITODATA_DIR}/${region}/IDS_${region}.pkl
 MASCHERA:
   class: File
-  path: ${MOSQUITODATA_DIR}/${region}/MASCHERA_${region}.pkl
+  path: ${MOSQUITODATA_DIR}/${region}/MASCHERA_rome.pkl
+outbase: R0_chik
