@@ -15,10 +15,6 @@ inputs:
     type: File[]
     inputBinding: {}
 
-  output_pattern:
-    type: string
-    default: 
-
 baseCommand: mosaic_tiff_generator
 
 arguments: [--output, "output_band_%02d.tif"]
