@@ -43,6 +43,6 @@ settings.hdf*
 ############
 # Mosquito #
 ############
-R0_chik.txt
+R0_chik.*
 density.txt
-rome_R0_chik.*
+output_band_*.tif

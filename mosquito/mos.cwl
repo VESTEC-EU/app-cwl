@@ -8,7 +8,7 @@ hints:
   SoftwareRequirement:
     packages:
       mosquito:
-        version: ["main"]
+        version: ["0.2.0"]
 
 requirements:
   InlineJavascriptRequirement:
