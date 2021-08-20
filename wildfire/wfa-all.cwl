@@ -54,6 +54,10 @@ inputs:
     type: File
     label: WFA dynamic configuration
 
+  catalyst_script:
+    type: File
+    label: Script to pass to ParaView Catalyst
+
 steps:
   firesim:
     run: wfa.cwl
@@ -69,6 +73,7 @@ steps:
       mdt_geotiff: mdt_geotiff
       weather_data: weather_data
       dynamic_config: dynamic_config
+      catalyst_script: catalyst_script
     out:
       - data
       - best_conditions

@@ -10,6 +10,9 @@
 cd ${SLURM_SUBMIT_DIR:-$PWD}
 
 . ../env.sh
+(
+    envsubst < wfa-all-template.yml > wfa-all.yml
+)
 
 tmp_init $PWD/tmp
 

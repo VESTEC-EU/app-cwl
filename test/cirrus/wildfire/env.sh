@@ -4,3 +4,4 @@ thisdir=$(dirname $BASH_SOURCE)
 export VESTEC_CWL_PLATFORM_CONF=$(readlink -f $thisdir/modules-conf.yml)
 
 . $thisdir/../env.sh
+module load fireapp/NoCatalyst
