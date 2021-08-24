@@ -6,5 +6,5 @@ IDS:
   path: ${MOSQUITODATA_DIR}/${region}/IDS_${region}.pkl
 MASCHERA:
   class: File
-  path: ${MOSQUITODATA_DIR}/${region}/MASCHERA_rome.pkl
+  path: ${MOSQUITODATA_DIR}/${region}/MASCHERA_${region}.pkl
 outbase: R0_chik
