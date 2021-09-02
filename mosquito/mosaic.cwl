@@ -8,7 +8,7 @@ hints:
   SoftwareRequirement:
     packages:
       mosquitopost:
-        version: ["0.2.1"]
+        version: ["0.3.0"]
 
 inputs:
   tiffs:
