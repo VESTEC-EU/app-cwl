@@ -35,9 +35,6 @@ weather_output_period_seconds: 3600
 dynamic_config:
   class: File
   path: dynamic.json
-catalyst_script:
-  class: File
-  path: ${FIREAPP_DIR}/scripts/topologicalProxies.py
 
 sims_per_rank: 5
 
