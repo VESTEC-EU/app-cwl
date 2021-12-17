@@ -22,6 +22,3 @@ lowerright:
 dynamic_config:
   class: File
   path: dynamic.json
-catalyst_script:
-  class: File
-  path: ${FIREAPP_DIR}/scripts/topologicalProxies.py
