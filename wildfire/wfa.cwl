@@ -124,10 +124,9 @@ outputs:
       glob: OUT/$(inputs.sim_name)_LOG_*.txt
 
   data:
-    type: wfa_out.yml#ras_out
+    type: File[]
     outputBinding:
-      glob: OUT/$(inputs.sim_name)_*_*.tif
-      outputEval: $(structure_wfa_output(self))
+      glob: OUT/$(inputs.sim_name)_*_*.tif      
   best_conditions:
     type: File
     outputBinding:
