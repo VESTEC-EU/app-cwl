@@ -35,7 +35,6 @@ requirements:
       - $(inputs.mdt_geotiff)
       - $(inputs.weather_data)
       - $(inputs.dynamic_config)
-      - $(inputs.catalyst_script)
       - class: Directory
         listing: []
         basename: OUT
@@ -67,8 +66,7 @@ requirements:
             "pathCH": "",
             "pathFuel": "$(inputs.fuel_geotiff.basename)",
             "pathMdt": "$(inputs.mdt_geotiff.basename)",
-            "pathWeatherWrfout": "$(inputs.weather_data.basename)",
-            "pathCatalystScript": "$(inputs.catalyst_script.basename)"
+            "pathWeatherWrfout": "$(inputs.weather_data.basename)"
           }
 
 inputs:
@@ -110,10 +108,6 @@ inputs:
   dynamic_config:
     type: File
     label: WFA dynamic configuration
-
-  catalyst_script:
-    type: File
-    label: Script to pass to ParaView Catalyst
 
 baseCommand: [WildFire, config.json]
 
