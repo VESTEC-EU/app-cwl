@@ -77,9 +77,6 @@ inputs:
   dynamic_config:
     type: File
     label: WFA dynamic configuration
-  catalyst_script:
-    type: File
-    label: Script to pass to ParaView Catalyst
 
 steps:
   prep_pgd:
@@ -124,7 +121,6 @@ steps:
       lowerright: lowerright
       weather_data: mnh2nc/fireinput
       dynamic_config: dynamic_config
-      catalyst_script: catalyst_script
 
     out:
       - best_conditions
