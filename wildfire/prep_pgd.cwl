@@ -10,7 +10,7 @@ hints:
   SoftwareRequirement:
     packages:
       Meso-NH:
-        version: ["5.4.2"]
+        version: ["5.4.4"]
 
 requirements:
   cwltool:MPIRequirement:
