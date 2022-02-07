@@ -1,0 +1,5 @@
+lat_first_point: 41
+lon_first_point: 12
+lat_second_point: 42
+lon_second_point: 13
+n_max_tiles: 9
