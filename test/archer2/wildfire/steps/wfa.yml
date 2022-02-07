@@ -24,4 +24,4 @@ dynamic_config:
   path: dynamic.json
 catalyst_script:
   class: File
-  path: null_catalyst.py
+  path: ../null_catalyst.py

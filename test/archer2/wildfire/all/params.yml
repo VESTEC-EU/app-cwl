@@ -43,3 +43,7 @@ fuel_geotiff:
 mdt_geotiff:
   class: File
   path: /work/d170/d170/shared/TEST_DATA/WFA/_2_dem_extract_10m_extract.tif
+
+catalyst_script:
+  class: File
+  path: ../null_catalyst.py

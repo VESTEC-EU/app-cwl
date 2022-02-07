@@ -18,7 +18,7 @@ cwltool  \
     --enable-ext \
     --preserve-environment LD_LIBRARY_PATH \
     --mpi-config-file $VESTEC_CWL_MPI_CONF \
-    --override wfa-mpi-env.yml \
+    --override ../wfa-mpi-env.yml \
     $VESTEC_CWL_ROOT/wildfire/wfa.cwl \
     wfa.yml
 

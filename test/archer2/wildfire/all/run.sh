@@ -13,16 +13,12 @@
 
 . ../env.sh
 
-export OMP_NUM_THREADS=4
-export OMP_PLACES=cores
-
 cwltool \
     --preserve-environment LD_LIBRARY_PATH \
-    --preserve-environment OMP_NUM_THREADS \
-    --preserve-environment OMP_PLACES \
     --beta-dependency-resolvers-configuration $VESTEC_CWL_PLATFORM_CONF \
     --enable-ext \
     --mpi-config-file $VESTEC_CWL_MPI_CONF \
+    --override ../wfa-mpi-env.yml \
     $VESTEC_CWL_ROOT/wildfire/all.cwl \
     params.yml
 
