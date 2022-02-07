@@ -2,3 +2,6 @@ simple.yml
 convert.yml
 coord_rect_?_?.txt
 list_rect.txt
+*.pkl
+*.tif
+*.csv

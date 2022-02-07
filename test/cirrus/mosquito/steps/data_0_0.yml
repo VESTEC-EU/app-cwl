@@ -1,0 +1,6 @@
+global_tif_folder:
+  class: Directory
+  path: /lustre/home/dc118/shared/transfer/mosquito/global_input_tif_files
+coord_rect_file:
+  class: File
+  path: coord_rect_0_0.txt
