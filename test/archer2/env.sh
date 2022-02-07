@@ -1,7 +1,6 @@
 # Source this to make things work on ARCHER2
 thisdir=$(dirname $BASH_SOURCE)
 
-module -s load epcc-job-env
 module use /work/d170/shared/modules
 module use /work/d170/d170/shared/modules
 

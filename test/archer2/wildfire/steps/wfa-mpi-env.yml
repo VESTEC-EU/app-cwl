@@ -1,0 +1,8 @@
+http://commonwl.org/cwltool#overrides:
+  wfa.cwl:
+    requirements:
+      EnvVarRequirement:
+        envDef:
+          MPICH_ASYNC_PROGRESS: "1"
+          OMP_NUM_THREADS: "4"
+          OMP_PLACES: cores

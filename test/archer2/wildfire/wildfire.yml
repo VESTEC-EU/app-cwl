@@ -3,7 +3,7 @@
     version: vestec
   to:
     name: fireapp
-    version: NoCatalyst
+    version: feature_assets_and_cp_check_catalyst_off
 - from:
     name: wfapost
     version: 1

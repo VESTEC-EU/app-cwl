@@ -1,5 +1,4 @@
-- type: modules
-  modulecmd: /usr/local/Modules/bin/modulecmd
+- type: lmod
   mapping_files:
     - mesonh-modules.yml
     - wildfire.yml
