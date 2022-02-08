@@ -2,8 +2,3 @@ simple.yml
 convert-R0.yml
 convert-density.yml
 mos_sim_0_0.yml
-coord_rect_?_?.txt
-list_rect.txt
-*.pkl
-*.tif
-*.csv

@@ -60,7 +60,32 @@ outputs:
     outputBinding:
       glob: "output/wc_temp_rect_*_*.csv"
 
-  tifs:
-    type: File[]
+  temp_mean_tif:
+    type: File
     outputBinding:
-      glob: "output/*_rect_*_*.tif"
+      glob: "output/temp_mean_*.tif"
+
+  temp_maximum_tif:
+    type: File
+    outputBinding:
+      glob: "output/temp_maximum_*.tif"
+
+  rain_mean_tif:
+    type: File
+    outputBinding:
+      glob: "output/rain_mean_*.tif"
+
+  popul_tif:
+    type: File
+    outputBinding:
+      glob: "output/population_*.tif"
+
+  gdp_tif:
+    type: File
+    outputBinding:
+      glob: "output/gdp_not_filtered_*.tif"
+
+  monthly_temp_tif:
+    type: File
+    outputBinding:
+      glob: "output/wc_temp_*.tif"
