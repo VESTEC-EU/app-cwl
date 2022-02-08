@@ -1,0 +1,10 @@
+C_OUT:
+  class: File
+  path: R0_${disease}.txt
+IDS:
+  class: File
+  path: IDS_${region}.pkl
+MASCHERA:
+  class: File
+  path: MASCHERA_${region}.pkl
+outbase: R0_${disease}
