@@ -1,5 +1,5 @@
 - type: modules
-  modulecmd: /usr/local/Modules/bin/modulecmd
+  modulecmd: /opt/cray/pe/modules/3.2.11.5/bin/modulecmd
   mapping_files:
     - mesonh-modules.yml
     - wildfire.yml
