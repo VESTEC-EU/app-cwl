@@ -1,3 +1,4 @@
 - type: modules
   modulecmd: /usr/bin/modulecmd
-
+  mapping_files:
+    - mosquito.yml

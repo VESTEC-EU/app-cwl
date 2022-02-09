@@ -8,19 +8,24 @@ hints:
   SoftwareRequirement:
     packages:
       mosquitopost:
-        version: ["0.3.0"]
+        version: ["add-preprocessing-and-nc-output"]
 
 inputs:
   tiffs:
     type: File[]
-    inputBinding: {}
+    inputBinding:
+      prefix: --input-tiffs
+
+  output_basepath:
+    type: string
+    default: output
+    inputBinding:
+      prefix: --output-basepath
 
 baseCommand: mosaic_tiff_generator
-
-arguments: [--output, "output_band_%02d.tif"]
 
 outputs:
   mosaic:
     type: File[]
     outputBinding:
-      glob: "output_band_*.tif"
+      glob: "$(inputs.output_basepath)*.tif"

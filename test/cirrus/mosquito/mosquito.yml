@@ -1,0 +1,6 @@
+- from:
+    name: mosquitopost
+    version: 0.3.0
+  to:
+    name: mosquitopost
+    version: add-preprocessing-and-nc-output
