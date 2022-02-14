@@ -3,6 +3,8 @@
 
 cwlVersion: v1.1
 class: CommandLineTool
+$namespaces:
+  cwltool: http://commonwl.org/cwltool#
 
 hints:
   SoftwareRequirement:
