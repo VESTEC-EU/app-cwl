@@ -8,7 +8,7 @@ hints:
   SoftwareRequirement:
     packages:
       mosquitopost:
-        version: ["add-preprocessing-and-nc-output"]
+        version: ["0.4.0"]
 
 inputs:
   tiffs:
