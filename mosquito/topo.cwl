@@ -23,7 +23,7 @@ inputs:
     type: string
     inputBinding:
       prefix: -d
-  tiffs:
+  inputs:
     type: File[]
     inputBinding: {}
 
