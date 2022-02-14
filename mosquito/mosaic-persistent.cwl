@@ -23,10 +23,10 @@ inputs:
       prefix: --output-basepath
 
 baseCommand: mosaic_tiff_generator
-arguments: ["--nc-output-file", "False", "--tif-output-file", "True", "--one-file-per-band", "True"]
+arguments: ["--nc-output-file", "True", "--tif-output-file", "False", "--one-file-per-band", "True"]
 
 outputs:
   mosaic_nc:
     type: File[]
     outputBinding:
-      glob: "$(inputs.output_basepath)*.tif"
+      glob: "$(inputs.output_basepath)*.nc"
