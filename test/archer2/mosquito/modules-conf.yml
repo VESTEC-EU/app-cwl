@@ -1,0 +1,4 @@
+- type: lmod
+  mapping_files:
+    - mosquito.yml
+

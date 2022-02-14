@@ -1,0 +1,12 @@
+- from:
+    name: mosquitopost
+    version: 0.4.0
+  to:
+    name: mosquitopost
+    version: 0.4.0
+- from:
+    name: mosquito
+    version: 0.2.0
+  to:
+    name: mosquito
+    version: 0.2.0
