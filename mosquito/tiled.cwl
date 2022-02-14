@@ -131,6 +131,13 @@ steps:
     out:
       - mosaic
 
+  mosaic_r0_persistent:
+    run: mosaic-persistent.cwl
+    in:
+      tiffs: tile/r0_tif
+    out:
+      - mosaic_nc
+
   mosaic_density:
     run: mosaic.cwl
     in:
@@ -167,6 +174,11 @@ outputs:
     type: File[]
     outputSource: mosaic_r0/mosaic
 
+  r0_persistent:
+    type: File[]
+    outputSource: mosaic_r0_persistent/mosaic_nc
+
   density:
     type: File[]
     outputSource: mosaic_density/mosaic
+
