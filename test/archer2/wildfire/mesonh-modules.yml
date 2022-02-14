@@ -1,6 +1,6 @@
 - from:
     name: Meso-NH
-    version: 5.4.2
+    version: 5.4.4
   to:
     name: mesonh
     version: 5.4.4-LXgfortran-O2
