@@ -132,3 +132,13 @@ outputs:
     type: File
     outputBinding:
       glob: OUT/$(inputs.sim_name)_Best_Conditions.json
+
+  catalyst_output_vtx:
+    type: File[]
+    outputBinding:
+      glob: CatalystOutput/*.*vt*
+
+  catalyst_output_persistenceDiagrams:
+    type: File[]
+    outputBinding:
+      glob: CatalystOutput/persistenceDiagrams.cdb/data/*.*vt*
