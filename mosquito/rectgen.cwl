@@ -8,7 +8,7 @@ hints:
   SoftwareRequirement:
     packages:
       mosquitopost:
-        version: ["0.4.0"]
+        version: ["0.5.0"]
 
 requirements:
   InlineJavascriptRequirement:

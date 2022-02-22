@@ -124,13 +124,6 @@ steps:
     out:
       - mosaic
 
-  mosaic_r0:
-    run: mosaic.cwl
-    in:
-      tiffs: tile/r0_tif
-    out:
-      - mosaic
-
   mosaic_r0_persistent:
     run: mosaic-persistent.cwl
     in:
@@ -169,10 +162,6 @@ outputs:
   monthly_temp:
     type: File[]
     outputSource: mosaic_monthly_temp/mosaic
-
-  r0:
-    type: File[]
-    outputSource: mosaic_r0/mosaic
 
   r0_persistent:
     type: File[]

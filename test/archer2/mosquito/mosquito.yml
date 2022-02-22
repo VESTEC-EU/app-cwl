@@ -1,9 +1,9 @@
 - from:
     name: mosquitopost
-    version: 0.4.0
+    version: 0.5.0
   to:
     name: mosquitopost
-    version: 0.4.0
+    version: 0.5.0
 - from:
     name: mosquito
     version: 0.2.0

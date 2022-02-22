@@ -8,7 +8,7 @@ hints:
   SoftwareRequirement:
     packages:
       mosquitopost:
-        version: ["0.4.0"]
+        version: ["0.5.0"]
 
 inputs:
   tiffs:
@@ -23,10 +23,10 @@ inputs:
       prefix: --output-basepath
 
 baseCommand: mosaic_tiff_generator
-arguments: ["--nc-output-file", "True", "--tif-output-file", "False", "--one-file-per-band", "True"]
+arguments: ["--nc-output-file", "True"]
 
 outputs:
   mosaic_nc:
     type: File[]
     outputBinding:
-      glob: "$(inputs.output_basepath)*.nc"
+      glob: ["$(inputs.output_basepath)*.nc", "$(inputs.output_basepath)*.tif"]
